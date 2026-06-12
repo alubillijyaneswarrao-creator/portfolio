@@ -9,43 +9,57 @@ interface Certificate {
   icon: React.ReactNode;
   tags: string[];
   link: string;
+  isCustomModal?: boolean;
 }
 
-export const Certifications: React.FC = () => {
+interface CertificationsProps {
+  setView: (view: 'home' | 'spar') => void;
+}
+
+export const Certifications: React.FC<CertificationsProps> = ({ setView }) => {
   const certifications: Certificate[] = [
     {
       title: 'Computer Networks',
-      issuer: 'NPTEL Certification',
-      date: 'Verified Credential',
+      issuer: 'NPTEL Online Certification (IIT Kharagpur)',
+      date: 'Jan - Apr 2025 (12-Week Course)',
       icon: <Server className="w-6 h-6 text-blue-600 dark:text-blue-400" />,
-      tags: ['TCP/IP', 'Routing Protocols', 'Network Security'],
-      link: 'https://drive.google.com/file/d/1NSoY9ohEShkqGlQ-W5PZLpTUIjOWvMji/view?usp=sharing'
+      tags: ['TCP/IP', 'Internet Protocol', 'Network Routing'],
+      link: '/certificates/computer_networks.png'
     },
     {
-      title: 'Java Programming',
-      issuer: 'Beginner Level Certification',
-      date: 'Verified Credential',
+      title: 'Java Bootcamp',
+      issuer: 'LetsUpgrade (GDG MAD / ITM Edutech)',
+      date: 'Successfully Completed (25-27 Nov 2024)',
       icon: <Code className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />,
-      tags: ['OOPs', 'Data Structures', 'Java SE'],
-      link: 'https://drive.google.com/file/d/1C56iVhKT8f70TWqw7FIt1cFSrSGRhd-H/view?usp=sharing'
+      tags: ['OOPs', 'Java SE', 'Bootcamp'],
+      link: '/certificates/java_bootcamp.png'
     },
     {
       title: 'SPAR Conclave 2026',
       issuer: 'IIT Roorkee (ISRO)',
       date: 'Summit Certificate',
       icon: <Globe className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />,
-      tags: ['Spatial Analytics', 'ISRO Summit', 'AI Applications'],
-      link: 'https://drive.google.com/file/d/1AHwkQCJH07CXc693g2ftQdW1oW7iIsbr/view?usp=sharing'
+      tags: ['Spatial Analytics', 'ISRO Summit', 'Satellite Feeds'],
+      link: '#',
+      isCustomModal: true
     },
     {
       title: 'AIML Sprint by ByteXL',
-      issuer: 'ByteXL AIML sprint',
-      date: '2 Month Project',
+      issuer: 'ByteXL AI/ML Project-Based Learning',
+      date: 'Aug 25 - Oct 12, 2025 (2-Month Sprint)',
       icon: <Award className="w-6 h-6 text-rose-600 dark:text-rose-400" />,
-      tags: ['Real-world Project', 'Machine Learning', 'AI Models'],
-      link: 'https://drive.google.com/file/d/17CZS76TDDm4dW5pGBQxEg5gvVH1yE4oC/view?usp=sharing'
+      tags: ['Project: Growmart', 'AI/ML Development', 'Team Sankalp'],
+      link: '/certificates/aiml_sprint.png'
     }
   ];
+
+  const handleCardClick = (cert: Certificate) => {
+    if (cert.isCustomModal) {
+      setView('spar');
+    } else {
+      window.open(cert.link, '_blank');
+    }
+  };
 
   return (
     <section id="certifications" className="py-24 bg-white dark:bg-[#0F172A] border-y border-slate-100 dark:border-slate-800 transition-colors duration-300">
@@ -70,7 +84,8 @@ export const Certifications: React.FC = () => {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
-              className="glass-panel p-6 rounded-2xl border border-slate-200/70 dark:border-slate-850 flex flex-col justify-between h-full shadow-sm hover:shadow-lg transition-all duration-300 group"
+              onClick={() => handleCardClick(cert)}
+              className="glass-panel p-6 rounded-2xl border border-slate-200/70 dark:border-slate-855 flex flex-col justify-between h-full shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer"
             >
               <div className="space-y-4">
                 {/* Badge Icon */}
@@ -107,16 +122,11 @@ export const Certifications: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Micro Action Link */}
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1 text-xs font-bold text-blue-600 dark:text-blue-400 pt-2 border-t border-slate-100 dark:border-slate-800 opacity-80 group-hover:opacity-100 transition-opacity cursor-pointer"
-                >
-                  <span>View Certificate</span>
+                {/* Action trigger text */}
+                <div className="flex items-center space-x-1 text-xs font-bold text-blue-600 dark:text-blue-400 pt-2 border-t border-slate-100 dark:border-slate-800 opacity-80 group-hover:opacity-100 transition-opacity">
+                  <span>{cert.isCustomModal ? 'Explore SPAR Details' : 'View Digital Certificate'}</span>
                   <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </a>
+                </div>
               </div>
 
             </motion.div>
@@ -124,6 +134,7 @@ export const Certifications: React.FC = () => {
         </div>
 
       </div>
+
     </section>
   );
 };

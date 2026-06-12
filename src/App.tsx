@@ -10,8 +10,10 @@ import { Education } from './components/Education';
 import { Achievements } from './components/Achievements';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { SparDetails } from './components/SparDetails';
 
 function App() {
+  const [view, setView] = useState<'home' | 'spar'>('home');
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     // Check local storage or system preferences
     const savedTheme = localStorage.getItem('theme');
@@ -60,43 +62,49 @@ function App() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {/* Global Navbar */}
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      {view === 'spar' ? (
+        <SparDetails setView={setView} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      ) : (
+        <>
+          {/* Global Navbar */}
+          <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      {/* Main Content Layout */}
-      <main>
-        
-        {/* Section 1: Hero Banner */}
-        <Hero />
+          {/* Main Content Layout */}
+          <main>
+            
+            {/* Section 1: Hero Banner */}
+            <Hero />
 
-        {/* Section 2: About Me */}
-        <About />
+            {/* Section 2: About Me */}
+            <About />
 
-        {/* Section 3: Technical Skills */}
-        <Skills />
+            {/* Section 3: Technical Skills */}
+            <Skills />
 
-        {/* Section 4: Work Experience */}
-        <Experience />
+            {/* Section 4: Work Experience */}
+            <Experience />
 
-        {/* Section 5: Projects Showcase */}
-        <Projects />
+            {/* Section 5: Projects Showcase */}
+            <Projects />
 
-        {/* Section 6: Certifications */}
-        <Certifications />
+            {/* Section 6: Certifications */}
+            <Certifications setView={setView} />
 
-        {/* Section 7: Education */}
-        <Education />
+            {/* Section 7: Education */}
+            <Education />
 
-        {/* Section 8: Achievements / Counters */}
-        <Achievements />
+            {/* Section 8: Achievements / Counters */}
+            <Achievements />
 
-        {/* Section 9: Contact Center */}
-        <Contact />
+            {/* Section 9: Contact Center */}
+            <Contact />
 
-      </main>
+          </main>
 
-      {/* Section 10: Footer */}
-      <Footer />
+          {/* Section 10: Footer */}
+          <Footer />
+        </>
+      )}
 
     </div>
   );
