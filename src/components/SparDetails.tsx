@@ -233,11 +233,11 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
                 Photographs capturing our presentations, academic panel feedback sessions, and campus moments at IIT Roorkee.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                 {/* Presentation photo */}
                 <div className="space-y-2">
                   <div 
-                    className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-md aspect-video cursor-pointer"
+                    className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-md aspect-[3/2] cursor-pointer"
                     onClick={() => window.open('/certificates/spar_presentation.jpg', '_blank')}
                   >
                     <img
@@ -257,13 +257,13 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
                 {/* Outdoor photo holding certificate */}
                 <div className="space-y-2">
                   <div 
-                    className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-md aspect-video cursor-pointer"
+                    className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-md aspect-[3/4] cursor-pointer"
                     onClick={() => window.open('/certificates/spar_holding_certificate.jpg', '_blank')}
                   >
                     <img
                       src="/certificates/spar_holding_certificate.jpg"
                       alt="Alubilli Jyaneswar Rao at IIT Roorkee SpAR Conclave"
-                      className="w-full h-full object-cover object-top group-hover:scale-103 transition-transform duration-300"
+                      className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-slate-950/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                       <span className="px-2 py-1 rounded bg-slate-900/90 text-white text-[10px] font-semibold">View Full</span>
