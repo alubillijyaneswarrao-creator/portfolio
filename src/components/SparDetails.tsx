@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, MapPin, Award, Globe, Download, Sun, Moon, Info, ShieldCheck, ChevronRight, Sparkles, Presentation } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Award, Globe, Download, Sun, Moon, Info, ShieldCheck, ChevronRight, Sparkles, Presentation, CheckCircle } from 'lucide-react';
 
 interface SparDetailsProps {
   setView: (view: 'home' | 'spar') => void;
@@ -85,9 +85,33 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
               <span className="font-medium">IIT Roorkee, Uttarakhand, India</span>
             </span>
             <span className="flex items-center space-x-2">
-              <Award className="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400" />
+              <Award className="w-4.5 h-4.5 text-blue-600 dark:text-blue-400" />
               <span className="font-medium">Certificate of Participation Awarded</span>
             </span>
+            <span className="flex items-center space-x-2">
+              <CheckCircle className="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400" />
+              <span className="font-semibold text-emerald-600 dark:text-emerald-400">Qualified Finalist</span>
+            </span>
+          </div>
+        </motion.div>
+
+        {/* National Finalist Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mb-10 p-5 rounded-2xl border border-emerald-500/20 dark:border-emerald-500/10 bg-emerald-500/5 dark:bg-emerald-500/5 backdrop-blur-sm flex items-start space-x-4 shadow-sm text-left"
+        >
+          <div className="p-2.5 bg-emerald-500/10 rounded-xl text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+            <CheckCircle className="w-6 h-6 animate-pulse" />
+          </div>
+          <div>
+            <h4 className="font-display font-bold text-slate-900 dark:text-white text-base">
+              National Finalist Distinction
+            </h4>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+              Our team was successfully shortlisted as <strong>one of only 65 teams from all over India</strong> to attend the summit at IIT Roorkee, advancing to the <strong>National Final Stage</strong> of the SpAR Conclave 2026 challenge.
+            </p>
           </div>
         </motion.div>
 
