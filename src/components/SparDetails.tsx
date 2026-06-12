@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, MapPin, Award, Globe, FileText, Download, Sun, Moon, Info, ShieldCheck, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Award, Globe, Download, Sun, Moon, Info, ShieldCheck, ChevronRight, Sparkles, Presentation } from 'lucide-react';
 
 interface SparDetailsProps {
   setView: (view: 'home' | 'spar') => void;
@@ -13,6 +13,14 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
+
+  const conclaveTopics = [
+    'Space science and exploration',
+    'Space architecture and habitat design',
+    'Satellite technologies and future space missions',
+    'Research opportunities in the space sector',
+    'Innovation, entrepreneurship, and interdisciplinary applications of space technology'
+  ];
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0F172A] text-slate-800 dark:text-slate-100 transition-colors duration-300 pb-24">
@@ -60,10 +68,10 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
             <span>IIT Roorkee & ISRO Academic Summit</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-display font-bold text-slate-900 dark:text-white leading-tight">
-            Spatial Analytics & Remote Sensing (SpAR) Conclave 2026
+            Space Architecture (SpAR) Conclave 2026
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 mt-4 max-w-4xl">
-            A premium academic collaborative conclave exploring geospatial AI, remote sensing workflows, deep learning applications on satellite imagery, and aerospace logging standards.
+            A premium academic collaborative summit exploring interdisciplinary applications of technology in space science, habitat design, and aerospace telemetry modeling.
           </p>
 
           {/* Quick info list */}
@@ -85,9 +93,11 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
 
         {/* 2 Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column - Details */}
+          
+          {/* Left Column - Details, Design, and Role */}
           <div className="lg:col-span-7 space-y-8">
-            {/* Overview & Collaborative Org */}
+            
+            {/* Section 1: What was SpAR */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,19 +106,24 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-2">
                 <Info className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <span>Conclave Overview</span>
+                <span>What was SpAR?</span>
               </h2>
               <div className="space-y-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
                 <p>
-                  The SpAR Conclave 2026 was organized by the Department of Architecture & Planning, IIT Roorkee, in collaboration with the Indian Space Research Organisation (ISRO), Aryabhatta Research Institute of Observational Sciences (ARIES), and TIDES (Technology Incubation and Entrepreneurship Development Society) IIT Roorkee.
+                  <strong>SpAR (Space Architecture) Conclave 2026</strong> is a collaborative academic summit hosted at IIT Roorkee, bringing together experts from the <strong>Indian Space Research Organisation (ISRO)</strong>, <strong>IIT Roorkee</strong>, ARIES, and TIDES to address interdisciplinary space topics:
                 </p>
-                <p>
-                  The summit served as an intersection point for academic researchers, GIS scientists, and developers to share advancements in satellite remote sensing datasets, spatial telemetry parsing, and deep learning modeling for spatial information.
-                </p>
+                <ul className="grid grid-cols-1 gap-2.5 mt-4">
+                  {conclaveTopics.map((topic, idx) => (
+                    <li key={idx} className="flex items-start space-x-2.5 text-sm sm:text-base">
+                      <span className="h-2 w-2 rounded-full bg-blue-600 mt-2 flex-shrink-0" />
+                      <span>{topic}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
 
-            {/* My Contributions */}
+            {/* Section 2: Our Design - Lunar Habitat Showcase */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -116,31 +131,47 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
               className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-200/60 dark:border-slate-800/80"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                <span>My Role & Contributions</span>
+                <Sparkles className="w-5 h-5 text-amber-500" />
+                <span>Our Design: The Anahata Core</span>
               </h2>
-              <div className="space-y-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-                <p>
-                  As an AI/ML developer interested in geospatial analytics, my involvement focused on the analytical and architectural dimensions of spatial data:
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-3">
-                    <span className="h-2 w-2 rounded-full bg-blue-600 mt-2 flex-shrink-0" />
-                    <span><strong>GIS & Remote Sensing:</strong> Studied deep learning classification models on satellite imaging datasets, focusing on territorial mapping.</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <span className="h-2 w-2 rounded-full bg-blue-600 mt-2 flex-shrink-0" />
-                    <span><strong>Telemetry Data Parsing:</strong> Investigated telemetry standards and log extraction formats to interface raw geospatial sensors with predictive models.</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <span className="h-2 w-2 rounded-full bg-blue-600 mt-2 flex-shrink-0" />
-                    <span><strong>Academic Sessions:</strong> Engaged in workshops hosted by ISRO scientists covering spatial telemetry APIs and geospatial data libraries.</span>
-                  </li>
-                </ul>
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div className="md:col-span-7 space-y-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                  <p>
+                    <strong>The Anahata Core</strong> (SPAR26-HCBD-02) is a conceptual, human-centered lunar habitat design engineered to sustain lunar research crews.
+                  </p>
+                  <p>
+                    The structural concept features a modular geodesic regolith shield covering a pressurized communal and social core. The design includes detailed blueprints for:
+                  </p>
+                  <ul className="space-y-2 text-xs sm:text-sm pl-2">
+                    <li className="flex items-center space-x-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                      <span>Geodesic regolith shielding models</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                      <span>Exploded axonometric structural projection</span>
+                    </li>
+                    <li className="flex items-center space-x-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                      <span>Hydrogen-rich water protection layers</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="md:col-span-5 relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-md">
+                  <img
+                    src="/certificates/spar_design_1.jpg"
+                    alt="The Anahata Core Lunar Habitat Blueprint"
+                    className="w-full object-contain max-h-[300px] group-hover:scale-102 transition-transform duration-300 cursor-pointer"
+                    onClick={() => window.open('/certificates/spar_design_1.jpg', '_blank')}
+                  />
+                  <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <span className="px-2.5 py-1.5 rounded bg-white/95 text-slate-900 text-[10px] font-bold shadow-md">View Blueprint</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
-            {/* Design Slide / Project Graphic */}
+            {/* Section 3: My Role & What We Did */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -148,23 +179,106 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
               className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-200/60 dark:border-slate-800/80"
             >
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-2">
-                <FileText className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                <span>Geospatial Interface Slide</span>
+                <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                <span>My Role & Technical Scope</span>
               </h2>
-              <div className="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-900 shadow-lg">
-                <img
-                  src="/certificates/spar_design.png"
-                  alt="Geospatial Telemetry Interface Slide"
-                  className="w-full object-cover hover:scale-101 transition-transform duration-500"
-                />
+              
+              <div className="space-y-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                <p>
+                  As the software engineer and technical collaborator, my work focused on planning the digital control systems, environment sensors, and telemetry monitoring framework for the habitat design:
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-3">
+                    <span className="h-2 w-2 rounded-full bg-blue-600 mt-2 flex-shrink-0" />
+                    <span><strong>Sensor Telemetry Processing:</strong> Modeled diagnostic sensor nodes simulating environment parameters like oxygen levels, internal temperature, and atmospheric pressure inside the communal dome.</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="h-2 w-2 rounded-full bg-blue-600 mt-2 flex-shrink-0" />
+                    <span><strong>Habitat Logging Systems:</strong> Architected simulated backend logging databases and event triggers to monitor system stability and highlight critical threshold anomalies.</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="h-2 w-2 rounded-full bg-blue-600 mt-2 flex-shrink-0" />
+                    <span><strong>Space Tech Integration:</strong> Contributed to workshops exploring how MERN-stack and AI diagnostic models can support habitat automation and predictive system repairs.</span>
+                  </li>
+                </ul>
+
+                {/* Dashboard image display */}
+                <div className="relative rounded-xl overflow-hidden border border-slate-250 dark:border-slate-800/80 bg-slate-950 mt-6 shadow-inner">
+                  <img
+                    src="/certificates/spar_design.png"
+                    alt="Geospatial Telemetry Control Dashboard"
+                    className="w-full object-cover max-h-[200px] hover:scale-101 transition-transform duration-300 cursor-pointer"
+                    onClick={() => window.open('/certificates/spar_design.png', '_blank')}
+                  />
+                  <div className="absolute bottom-2 right-2 px-2 py-1 bg-slate-900/80 backdrop-blur rounded text-[10px] font-bold text-slate-300">
+                    Telemetry Analysis slide
+                  </div>
+                </div>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 italic text-center">
-                Figure 1: Digital slide from the geospatial information analysis dashboard analyzed during the conclave sessions.
-              </p>
             </motion.div>
+
+            {/* Section 4: Event Highlights Gallery */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-200/60 dark:border-slate-800/80"
+            >
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-2">
+                <Presentation className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                <span>Event Highlights & Presentation</span>
+              </h2>
+              <p className="text-sm text-slate-550 dark:text-slate-400 mb-6">
+                Photographs capturing our presentations, academic panel feedback sessions, and campus moments at IIT Roorkee.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Presentation photo */}
+                <div className="space-y-2">
+                  <div 
+                    className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-md aspect-video cursor-pointer"
+                    onClick={() => window.open('/certificates/spar_presentation.jpg', '_blank')}
+                  >
+                    <img
+                      src="/certificates/spar_presentation.jpg"
+                      alt="Presenting The Anahata Core at SpAR Conclave 2026"
+                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-slate-950/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <span className="px-2 py-1 rounded bg-slate-900/90 text-white text-[10px] font-semibold">View Full</span>
+                    </div>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 italic">
+                    Presenting the communal area architectural layouts of "The Anahata Core" to ISRO scientists and academic panels.
+                  </p>
+                </div>
+
+                {/* Outdoor photo holding certificate */}
+                <div className="space-y-2">
+                  <div 
+                    className="relative group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 shadow-md aspect-video cursor-pointer"
+                    onClick={() => window.open('/certificates/spar_holding_certificate.jpg', '_blank')}
+                  >
+                    <img
+                      src="/certificates/spar_holding_certificate.jpg"
+                      alt="Alubilli Jyaneswar Rao at IIT Roorkee SpAR Conclave"
+                      className="w-full h-full object-cover object-top group-hover:scale-103 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-slate-950/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <span className="px-2 py-1 rounded bg-slate-900/90 text-white text-[10px] font-semibold">View Full</span>
+                    </div>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 italic">
+                    Alubilli Jyaneswar Rao holding the certificate at the Department of Architecture & Planning, IIT Roorkee.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
 
-          {/* Right Column - Certificate Scan */}
+          {/* Right Column - Certificate Panel (Sticky) */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -173,7 +287,7 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
           >
             <div className="glass-panel p-6 rounded-2xl border border-slate-200/60 dark:border-slate-800/80 shadow-md">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-between">
-                <span>Digitalized Certificate</span>
+                <span>Conclave Certificate</span>
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                   Verified Scan
                 </span>
@@ -199,7 +313,7 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
               <div className="mt-6 space-y-4">
                 <div className="p-3 bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800/80 rounded-xl space-y-2">
                   <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Signing Authorities</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-350">
+                  <p className="text-xs text-slate-600 dark:text-slate-350 leading-relaxed">
                     • <strong>Prof. Mahua Mukherjee</strong> (IIT Roorkee)<br />
                     • <strong>Dr. Tirtha Pratim Das</strong> (Space Science Program, ISRO)<br />
                     • <strong>Dr. Azam Ali Khan</strong> (CEO TIDES, IIT Roorkee)
@@ -217,6 +331,7 @@ export const SparDetails: React.FC<SparDetailsProps> = ({ setView, darkMode, tog
               </div>
             </div>
           </motion.div>
+          
         </div>
       </main>
     </div>
