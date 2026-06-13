@@ -11,9 +11,12 @@ import { Achievements } from './components/Achievements';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { SparDetails } from './components/SparDetails';
+import { ProjectDetails } from './components/ProjectDetails';
+import type { Project } from './data/projectsData';
 
 function App() {
-  const [view, setView] = useState<'home' | 'spar'>('home');
+  const [view, setView] = useState<'home' | 'spar' | 'project-details'>('home');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     // Check local storage or system preferences
     const savedTheme = localStorage.getItem('theme');
@@ -62,7 +65,9 @@ function App() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {view === 'spar' ? (
+      {view === 'project-details' && selectedProject ? (
+        <ProjectDetails project={selectedProject} setView={setView} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      ) : view === 'spar' ? (
         <SparDetails setView={setView} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       ) : (
         <>
@@ -85,7 +90,7 @@ function App() {
             <Experience />
 
             {/* Section 5: Projects Showcase */}
-            <Projects />
+            <Projects onViewProject={(project) => { setSelectedProject(project); setView('project-details'); }} />
 
             {/* Section 6: Certifications */}
             <Certifications setView={setView} />
