@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-reac
 
 // Customize this Formspree form ID to get emails directly!
 // Create a free account at https://formspree.io/ and paste your form ID here.
-const FORMSPREE_FORM_ID = ''; 
+const FORMSPREE_FORM_ID = 'xlgkolaj'; 
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
