@@ -9,14 +9,29 @@ interface Position {
   location?: string;
   points: string[];
   skillsBadge: string[];
+  status: 'Ongoing' | 'Completed';
 }
 
 export const Experience: React.FC = () => {
   const experiences: Position[] = [
     {
+      role: 'AI/ML Apprentice',
+      company: 'ByteXL',
+      duration: '3 Months (Project Sprint)',
+      location: 'Remote, India',
+      points: [
+        'Participated in an intensive AI/ML project-based learning sprint to develop "Growmart", an online grocery marketplace.',
+        'Collaborated in Team Sankalp to design the user interface, perform initial concept explorations, and assess model readiness.',
+        'Structured component integration logs and studied AI maturity frameworks, including ethical impact considerations.',
+        'Engaged in model integration, validation tests, and technical structure optimization under mentor supervision.'
+      ],
+      skillsBadge: ['AI/ML Development', 'Python', 'Model Integration', 'System Architecture', 'Growmart Project'],
+      status: 'Completed'
+    },
+    {
       role: 'Machine Learning Intern',
       company: 'Edufy',
-      duration: 'Ongoing',
+      duration: 'Internship Completed',
       location: 'Remote, India',
       points: [
         'Built end-to-end machine learning pipelines involving preprocessing, model training, and performance metrics tracking.',
@@ -24,7 +39,8 @@ export const Experience: React.FC = () => {
         'Implemented and structured model serving and deployment scripts using lightweight web serving layers.',
         'Contributed to backend integrations and designed clean REST API contracts supporting ML inference systems.'
       ],
-      skillsBadge: ['Python', 'Scikit-learn', 'ML Pipelines', 'REST APIs', 'Model Deployment']
+      skillsBadge: ['Python', 'Scikit-learn', 'ML Pipelines', 'REST APIs', 'Model Deployment'],
+      status: 'Completed'
     },
     {
       role: 'AI/ML & Full Stack Trainee',
@@ -37,7 +53,8 @@ export const Experience: React.FC = () => {
         'Solving complex Data Structures & Algorithms (DSA) problems to strengthen technical core foundations.',
         'Strengthening software engineering fundamentals including version control (Git), clean code paradigms, and database designs.'
       ],
-      skillsBadge: ['MERN Stack', 'Node.js', 'React', 'DSA', 'SQL', 'Git']
+      skillsBadge: ['MERN Stack', 'Node.js', 'React', 'DSA', 'SQL', 'Git'],
+      status: 'Ongoing'
     }
   ];
 
@@ -59,7 +76,7 @@ export const Experience: React.FC = () => {
           
           {/* Vertical central line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-800 -translate-x-1/2" />
-
+ 
           {/* Timeline Items */}
           <div className="space-y-12">
             {experiences.map((exp, idx) => {
@@ -71,10 +88,10 @@ export const Experience: React.FC = () => {
                   <div className="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-white dark:bg-[#0F172A] border-4 border-blue-600 flex items-center justify-center -translate-x-1/2 z-10 shadow-sm">
                     <Briefcase className="w-3.5 h-3.5 text-blue-600" />
                   </div>
-
+ 
                   {/* Left spacer for desktop */}
                   <div className="hidden md:block w-1/2 px-8" />
-
+ 
                   {/* Content card */}
                   <motion.div
                     initial={{ opacity: 0, x: isEven ? 40 : -40 }}
@@ -86,8 +103,12 @@ export const Experience: React.FC = () => {
                     <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-850 hover:shadow-lg transition-all duration-300 relative">
                       
                       {/* Active Status Ribbon */}
-                      <span className="absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                        Ongoing
+                      <span className={`absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border ${
+                        exp.status === 'Ongoing'
+                          ? 'bg-emerald-500/10 dark:bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
+                          : 'bg-slate-500/10 dark:bg-slate-500/5 text-slate-600 dark:text-slate-400 border-slate-500/20'
+                      }`}>
+                        {exp.status}
                       </span>
 
                       {/* Header details */}
