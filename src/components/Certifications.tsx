@@ -19,6 +19,14 @@ interface CertificationsProps {
 export const Certifications: React.FC<CertificationsProps> = ({ setView }) => {
   const certifications: Certificate[] = [
     {
+      title: 'Machine Learning Internship Certificate',
+      issuer: 'Edufyi Tech Solutions',
+      date: 'Apr - Jun 2026 (2-Month Internship)',
+      icon: <Award className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />,
+      tags: ['Machine Learning', 'Python', 'Model Deployment'],
+      link: '/certificates/edufy_ml_internship.pdf'
+    },
+    {
       title: 'Computer Networks',
       issuer: 'NPTEL Online Certification (IIT Kharagpur)',
       date: 'Jan - Apr 2025 (12-Week Course)',

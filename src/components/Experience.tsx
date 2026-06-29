@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Award } from 'lucide-react';
 
 interface Position {
   role: string;
@@ -10,6 +10,7 @@ interface Position {
   points: string[];
   skillsBadge: string[];
   status: 'Ongoing' | 'Completed';
+  certificateUrl?: string;
 }
 
 export const Experience: React.FC = () => {
@@ -40,7 +41,8 @@ export const Experience: React.FC = () => {
         'Contributed to backend integrations and designed clean REST API contracts supporting ML inference systems.'
       ],
       skillsBadge: ['Python', 'Scikit-learn', 'ML Pipelines', 'REST APIs', 'Model Deployment'],
-      status: 'Completed'
+      status: 'Completed',
+      certificateUrl: '/certificates/edufy_ml_internship.pdf'
     },
     {
       role: 'AI/ML & Full Stack Trainee',
@@ -100,7 +102,7 @@ export const Experience: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="w-full md:w-1/2 pl-12 md:pl-0 md:px-8"
                   >
-                    <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-850 hover:shadow-lg transition-all duration-300 relative">
+                    <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-855 hover:shadow-lg transition-all duration-300 relative">
                       
                       {/* Active Status Ribbon */}
                       <span className={`absolute top-4 right-4 text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border ${
@@ -130,6 +132,18 @@ export const Experience: React.FC = () => {
                               <MapPin className="w-3.5 h-3.5 text-slate-400" />
                               <span>{exp.location}</span>
                             </span>
+                          )}
+                          {exp.certificateUrl && (
+                            <a
+                              href={exp.certificateUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-1 text-blue-600 dark:text-blue-450 font-bold hover:underline cursor-pointer"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Award className="w-3.5 h-3.5" />
+                              <span>View Certificate</span>
+                            </a>
                           )}
                         </div>
                       </div>
