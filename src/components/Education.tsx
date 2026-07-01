@@ -17,7 +17,7 @@ export const Education: React.FC = () => {
       institution: 'Parul University',
       degree: 'B.Tech Computer Science (AI & ML)',
       duration: '2023 – 2027',
-      grade: '7.84 CGPA',
+      grade: '8.03 CGPA',
       gradeLabel: 'Current CGPA',
       description: 'Acquiring deep foundations in Artificial Intelligence algorithms, Deep Neural Networks, Natural Language Processing, computer architectures, and software engineering practices.'
     },

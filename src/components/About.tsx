@@ -107,7 +107,7 @@ export const About: React.FC = () => {
                     <Award className="w-5 h-5 text-cyan-600 dark:text-cyan-400 mt-0.5 flex-shrink-0" />
                     <div>
                       <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Academic Merit</h4>
-                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">CGPA: 7.84 / 10.0</p>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">CGPA: 8.03 / 10.0</p>
                     </div>
                   </div>
                 </div>
