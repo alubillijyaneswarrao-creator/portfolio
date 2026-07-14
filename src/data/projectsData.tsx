@@ -24,6 +24,41 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    id: 'cricket-iq',
+    title: 'CricketIQ',
+    category: 'aiml',
+    description: 'Enterprise-grade SaaS combining advanced cricket data analytics with a LangChain RAG pipeline, multi-modal voice interaction, and real-time match simulations.',
+    purpose: 'CricketIQ was engineered to unify unstructured sports data with conversational intelligence. It allows users to query custom cricket documents (scorecards/articles) via dense vector similarity searches, compare head-to-head metrics using interactive radar maps, and view live match simulations with real-time AI-predicted win probabilities.',
+    tech: ['React.js', 'FastAPI', 'Python', 'LangChain', 'Google Gemini API', 'ChromaDB', 'PostgreSQL', 'Tailwind CSS', 'Recharts'],
+    challenges: [
+      'Advanced RAG Integration: Correctly splitting and indexing complex unstructured cricket documents to perform sub-second semantic search queries without hallucinating statistics.',
+      'Isolated PDF Ingestion: Allowing users to upload custom PDF match logs and scorecards, ensuring queries are strictly bounded within that document rather than global database context.',
+      'Real-Time Match Simulation: Ticking run rates, batsman strike rates, and AI-predicted win probabilities dynamically in the background every 8 seconds without UI rendering lag.'
+    ],
+    solutions: [
+      'Designed a LangChain pipeline pairing HuggingFace Sentence Transformers (all-MiniLM-L6-v2) for 384-dimensional dense embeddings with a local ChromaDB instance to perform high-speed cosine similarity retrieval.',
+      'Configured separate temporary vector collections in ChromaDB on a per-document basis, bounded by user session tokens, allowing isolated document-centric Q&A.',
+      'Structured an asynchronous background task runner in FastAPI that recalculates match probabilities and pushes state updates to the React client via Axios JSON queries.'
+    ],
+    liveUrl: 'https://cricket-iq-lime.vercel.app/',
+    githubUrl: 'https://github.com/alubillijyaneswarrao-creator/CricketIQ',
+    thumbnailGradients: 'from-emerald-700 to-teal-800',
+    graphicCode: (
+      <svg viewBox="0 0 100 60" className="w-full h-full text-white/20 fill-current">
+        <path d="M12 48 L48 12 A3 3 0 0 1 52 16 L16 52 A3 3 0 0 1 12 48 Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
+        <circle cx="56" cy="18" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+        <rect x="68" y="32" width="6" height="18" rx="1" />
+        <rect x="78" y="22" width="6" height="28" rx="1" />
+        <rect x="88" y="12" width="6" height="38" rx="1" />
+        <path d="M60 45 L68 35 L78 30 L88 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="60" cy="45" r="1.5" />
+        <circle cx="68" cy="35" r="1.5" />
+        <circle cx="78" cy="30" r="1.5" />
+        <circle cx="88" cy="20" r="1.5" />
+      </svg>
+    )
+  },
+  {
     id: 'turing-body',
     title: 'Turing Body',
     category: 'aiml',
