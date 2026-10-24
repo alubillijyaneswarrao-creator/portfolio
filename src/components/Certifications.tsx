@@ -19,6 +19,14 @@ interface CertificationsProps {
 export const Certifications: React.FC<CertificationsProps> = ({ setView }) => {
   const certifications: Certificate[] = [
     {
+      title: 'Exploring SAP Analytics Cloud',
+      issuer: 'SAP Learning',
+      date: 'Sep 2, 2026 (Course Completion · Beginner)',
+      icon: <Globe className="w-6 h-6 text-blue-500 dark:text-blue-400" />,
+      tags: ['SAP Analytics Cloud', 'Storyboarding', 'Production Planning', 'Calculations'],
+      link: 'https://badger.learning.sap.com/verify/xavud-fufah-vosug-huhyh-cohus'
+    },
+    {
       title: 'Machine Learning Internship Certificate',
       issuer: 'Edufyi Tech Solutions',
       date: 'Apr - Jun 2026 (2-Month Internship)',
@@ -26,6 +34,7 @@ export const Certifications: React.FC<CertificationsProps> = ({ setView }) => {
       tags: ['Machine Learning', 'Python', 'Model Deployment'],
       link: '/certificates/edufy_ml_internship.pdf'
     },
+
     {
       title: 'Computer Networks',
       issuer: 'NPTEL Online Certification (IIT Kharagpur)',
